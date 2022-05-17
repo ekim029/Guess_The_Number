@@ -1,5 +1,8 @@
-import random
 
+import random
+import math
+
+guess_count = 0
 print("Hello!")
 play = input("Would you like to play the number guessing game? ")
 
@@ -25,7 +28,7 @@ if (play.lower() == "yes" or play.lower() == 'y'):
             print("That's not a number...")
 
     rand_int = random.randint(lower_bound, upper_bound + 1)
-    print("Ok... \n I've got my number!")
+    print("Ok... \nI've got my number!")
 
     # start guessing
     while True:
@@ -37,17 +40,25 @@ if (play.lower() == "yes" or play.lower() == 'y'):
 
     while True:
         if (inputs == rand_int):
-            print("You got it :)")
+            guess_count += 1
+
+            bound_range = upper_bound - lower_bound
+            if (math.log(bound_range) <= guess_count):
+                print("Great! You got it in " + str(bound_range) + " tries!")
+            else:
+                print("Took you long enough. It took you " + str(bound_range) + " tries")
             quit()
         elif (int(inputs) > rand_int):
             try:
                 inputs = int(input("Nope! Try lower: "))
+                guess_count += 1
             except: 
                 print("That's not a valid input...")
 
         elif (int(inputs) < rand_int):
             try:
                 inputs = int(input("Nope! Try higher: "))
+                guess_count += 1
             except:
                 print("That's not a valid input...")
 
