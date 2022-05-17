@@ -6,7 +6,7 @@ guess_count = 0
 print("Hello!")
 play = input("Would you like to play the number guessing game? ")
 
-if (play.lower() == 'y' or play.lower() == "ye" or play_lower == "yes"):
+if (play.lower() == 'y' or play.lower() == "ye" or play.lower() == "yes"):
     # get lower bound
     while True:
         try:
