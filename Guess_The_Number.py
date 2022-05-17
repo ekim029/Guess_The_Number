@@ -6,8 +6,7 @@ guess_count = 0
 print("Hello!")
 play = input("Would you like to play the number guessing game? ")
 
-if (play.lower() == "yes" or play.lower() == 'y'):
-
+if (play.lower() == 'y' or play.lower() == "ye" or play_lower == "yes"):
     # get lower bound
     while True:
         try:
@@ -15,7 +14,6 @@ if (play.lower() == "yes" or play.lower() == 'y'):
             break
         except:
             print("That's not a number...")
-
     # get upper bound
     while True:
         try:
@@ -39,22 +37,25 @@ if (play.lower() == "yes" or play.lower() == 'y'):
             print("That's not a number...")
 
     while True:
+        # if user gets the answer
         if (inputs == rand_int):
             guess_count += 1
 
             bound_range = upper_bound - lower_bound
+            # result depending on whether user used binary serach method
             if (math.log(bound_range) <= guess_count):
-                print("Great! You got it in " + str(bound_range) + " tries!")
+                print("Great! You got it in " + str(guess_count) + " tries!")
             else:
-                print("Took you long enough. It took you " + str(bound_range) + " tries")
+                print("Took you long enough. It took you " + str(guess_count) + " tries")
             quit()
+        # if input is bigger than the answer
         elif (int(inputs) > rand_int):
             try:
                 inputs = int(input("Nope! Try lower: "))
                 guess_count += 1
             except: 
                 print("That's not a valid input...")
-
+        # if input is smaller than the answer
         elif (int(inputs) < rand_int):
             try:
                 inputs = int(input("Nope! Try higher: "))
@@ -63,6 +64,7 @@ if (play.lower() == "yes" or play.lower() == 'y'):
                 print("That's not a valid input...")
 
 else:
+    print("Okay, see you next time!")
     quit()
 
 
